@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply bg-ocean-light text-text-primary;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  input[type="range"] {
+    touch-action: pan-y;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F3FAFC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C4DCE5;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #087EA4;
+}
+
+/* Nautical grid background pattern */
+.bg-nautical-grid {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(8, 126, 164, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(8, 126, 164, 0.05) 1px, transparent 1px);
+}
+
+.bg-radar-sweep {
+  background: radial-gradient(circle, rgba(21, 151, 199, 0.15) 0%, rgba(8, 126, 164, 0.03) 70%, transparent 100%);
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+/* Simulation fluid and vector animations */
+@keyframes flowDashForward {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+
+.flowing-wind-stream {
+  stroke-dasharray: 6, 8;
+  animation: flowDashForward 1.4s linear infinite;
+}
+
+.flowing-current-stream {
+  stroke-dasharray: 8, 10;
+  animation: flowDashForward 2.2s linear infinite;
+}
+
+.pulsing-wake {
+  stroke-dasharray: 4, 6;
+  animation: flowDashForward 0.9s linear infinite;
+}
+
+@keyframes beaconRadar {
+  0% { transform: scale(0.9); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.animate-beacon-radar {
+  animation: beaconRadar 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes radarSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-radar {
+  animation: radarSpin 4s linear infinite;
+}
+
+/* ==========================================================================
+   Stacking Context & Z-Index Collision Prevention (Maps vs Dropdowns & Modals)
+   ========================================================================== */
+
+/* 1. Force Leaflet maps to establish a contained, local stacking context */
+.leaflet-container {
+  isolation: isolate;
+  z-index: 0 !important;
+  position: relative;
+}
+
+/* 2. Ensure all dialog overlays, modal backdrops, and drawers render above everything */
+div[class*="fixed"][class*="inset-0"] {
+  z-index: 9999 !important;
+}
+
