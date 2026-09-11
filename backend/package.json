@@ -1,0 +1,16 @@
+{
+  "name": "marinesight-backend",
+  "version": "1.0.0",
+  "description": "High-Performance Native Node.js Geospatial Telemetry & Forensic Attribution Server",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test/testApi.js"
+  },
+  "keywords": ["marinesight", "maritime", "gis", "oil-spill", "ais", "node"],
+  "author": "MarineSight Team",
+  "license": "ISC"
+}
+
