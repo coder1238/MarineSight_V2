@@ -13,6 +13,7 @@ import {
   Wind,
   Waves,
   Satellite,
+  Droplets,
   Check,
   Plus,
   Copy,
