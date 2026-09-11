@@ -6,7 +6,7 @@ import {
   SYSTEM_HEALTH 
 } from '../data/mockData';
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const BASE_URL = 'https://marinesightbackend.onrender.com/api' || import.meta.env.VITE_API_URL;
 
 async function fetchWithFallback(url, options = {}, fallbackData = null) {
   try {
